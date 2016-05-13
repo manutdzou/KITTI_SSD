@@ -1,0 +1,20 @@
+item {
+  name: "none_of_the_above"
+  label: 0
+  display_name: "background"
+}
+item {
+  name: "aeroplane"
+  label: 1
+  display_name: "aeroplane"
+}
+item {
+  name: "bicycle"
+  label: 2
+  display_name: "bicycle"
+}
+item {
+  name: "bird"
+  label: 3
+  display_name: "bird"
+}

@@ -1,0 +1,43 @@
+I0504 16:46:53.205416  3042 caffe.cpp:185] Using GPUs 0
+I0504 16:46:53.213872  3042 caffe.cpp:190] GPU 0: GeForce GTX TITAN X
+I0504 16:46:53.349871  3042 solver.cpp:51] Initializing solver from parameters: 
+test_net: "/home/bsl/Debug/ssd_caffe/models/VGGNet/KITTI/SSD_600x150/test.prototxt"
+test_iter: 7481
+test_interval: 10000
+base_lr: 0.001
+display: 10
+max_iter: 60000
+lr_policy: "step"
+gamma: 0.1
+momentum: 0.9
+weight_decay: 0.0005
+stepsize: 40000
+snapshot: 40000
+snapshot_prefix: "/home/bsl/Debug/ssd_caffe/models/VGGNet/KITTI/SSD_600x150/VGG_KITTI_SSD_600x150"
+solver_mode: GPU
+device_id: 0
+debug_info: false
+snapshot_after_train: true
+test_initialization: false
+average_loss: 10
+iter_size: 1
+type: "SGD"
+eval_type: "detection"
+ap_version: "11point"
+F0504 16:46:53.350082  3042 solver.cpp:74] Check failed: num_train_nets >= 1 (0 vs. 1) SolverParameter must specify a train net using one of these fields: net, net_param, train_net, train_net_param
+*** Check failure stack trace: ***
+    @     0x7f04e8629daa  (unknown)
+    @     0x7f04e8629ce4  (unknown)
+    @     0x7f04e86296e6  (unknown)
+    @     0x7f04e862c687  (unknown)
+    @     0x7f04e92aded2  caffe::Solver<>::InitTrainNet()
+    @     0x7f04e92adc36  caffe::Solver<>::Init()
+    @     0x7f04e92ad6d6  caffe::Solver<>::Solver()
+    @     0x7f04e91f3833  caffe::SGDSolver<>::SGDSolver()
+    @     0x7f04e91fe274  caffe::Creator_SGDSolver<>()
+    @           0x422bd6  caffe::SolverRegistry<>::CreateSolver()
+    @           0x41e105  train()
+    @           0x4206b3  main
+    @     0x7f04e7186ec5  (unknown)
+    @           0x41cf29  (unknown)
+    @              (nil)  (unknown)
