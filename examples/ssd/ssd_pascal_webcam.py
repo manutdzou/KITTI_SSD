@@ -60,16 +60,16 @@ webcam_id = 0
 # If true, use batch norm for all newly added layers.
 # Currently only the non batch norm version has been tested.
 use_batchnorm = False
-num_classes = 21
+num_classes = 4
 share_location = True
 background_label_id=0
 conf_loss_type = P.MultiBoxLoss.SOFTMAX
 code_type = P.PriorBox.CENTER_SIZE
 # Stores LabelMapItem.
-label_map_file = "/home/bsl/caffe/data/VOC0712/labelmap_voc.prototxt"
+label_map_file = "/home/bsl/KITTI_SSD/data/KITTI/labelmap_voc.prototxt"
 # The resized image size
-resize_width = 300
-resize_height = 300
+resize_width = 640
+resize_height = 480
 
 # Parameters needed for test.
 # Set the number of test iterations to the maximum integer number.

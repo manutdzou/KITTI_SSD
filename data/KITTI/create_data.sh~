@@ -4,9 +4,9 @@ root_dir=$cur_dir/../..
 cd $root_dir
 
 redo=1
-data_root_dir="$HOME/ssd_caffe/data/KITTI"
+data_root_dir="$HOME/Debug/ssd_caffe/data/KITTI"
 dataset_name="KITTI"
-mapfile="$root_dir/data/$dataset_name/labelmap_voc.prototxt"
+mapfile="$root_dir/data/$dataset_name/labelmap_KITTI.prototxt"
 anno_type="detection"
 db="lmdb"
 min_dim=0

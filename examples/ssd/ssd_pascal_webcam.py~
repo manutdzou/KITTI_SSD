@@ -1,4 +1,6 @@
 from __future__ import print_function
+import sys
+sys.path.append('/home/bsl/caffe/python/')
 import caffe
 from caffe.model_libs import *
 from google.protobuf import text_format
@@ -8,9 +10,9 @@ import os
 import shutil
 import stat
 import subprocess
-import sys
 
-sys.path.append('/home/bsl/caffe/python/')
+
+
 
 # Add extra layers on top of a "base" network (e.g. VGGNet or Inception).
 def AddExtraLayers(net, use_batchnorm=True):
@@ -64,7 +66,7 @@ background_label_id=0
 conf_loss_type = P.MultiBoxLoss.SOFTMAX
 code_type = P.PriorBox.CENTER_SIZE
 # Stores LabelMapItem.
-label_map_file = "data/VOC0712/labelmap_voc.prototxt"
+label_map_file = "/home/bsl/KITTI_SSD/data/KITTI/labelmap_voc.prototxt"
 # The resized image size
 resize_width = 300
 resize_height = 300
@@ -130,11 +132,11 @@ job_name = "SSD_{}".format(resize)
 model_name = "VGG_VOC0712_{}".format(job_name)
 
 # Directory which stores the model .prototxt file.
-save_dir = "models/VGGNet/VOC0712/{}_webcam".format(job_name)
+save_dir = "/home/bsl/caffe/models/VGGNet/VOC0712/{}_webcam".format(job_name)
 # Directory which stores the snapshot of trained models.
-snapshot_dir = "models/VGGNet/VOC0712/{}".format(job_name)
+snapshot_dir = "/home/bsl/caffe/models/VGGNet/VOC0712/{}".format(job_name)
 # Directory which stores the job script and log file.
-job_dir = "jobs/VGGNet/VOC0712/{}_webcam".format(job_name)
+job_dir = "/home/bsl/caffe/jobs/VGGNet/VOC0712/{}_webcam".format(job_name)
 
 # model definition files.
 test_net_file = "{}/test.prototxt".format(save_dir)
@@ -244,7 +246,8 @@ with open(test_net_file, 'w') as f:
 
 # Create job file.
 with open(job_file, 'w') as f:
-  f.write('cd {}\n'.format(caffe_root))
+  #f.write('cd {}\n'.format(caffe_root))
+  f.write('cd {}\n'.format('/home/bsl/caffe'))
   f.write('./build/tools/caffe test \\\n')
   f.write('--model="{}" \\\n'.format(test_net_file))
   f.write('--weights="{}" \\\n'.format(pretrain_model))
