@@ -57,6 +57,7 @@ for parent, dirnames, filenames in os.walk(test_image_path):
         img_path=caffe_root + 'data/KITTI/training/data_object_image_2/testing/image_2/'+filename
         result_path=caffe_root + 'data/KITTI/results/'+filename
         image = caffe.io.load_image(img_path)
+        print(image.shape)
         transformed_image = transformer.preprocess('data', image)
         net.blobs['data'].data[...] = transformed_image
         timer.tic()

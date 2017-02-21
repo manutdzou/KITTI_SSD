@@ -56,18 +56,8 @@ visualize_threshold=0.6
 dir_name='04041652_2624.MP4'
 dir_root=os.path.join(caffe_root,dir_name)
 videoCapture = cv2.VideoCapture(dir_root)
-fps = videoCapture.get(cv2.cv.CV_CAP_PROP_FPS)
-#fps=25
-size = (int(videoCapture.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT))/2,int(videoCapture.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH))/2)
+size = (int(videoCapture.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH))/2,int(videoCapture.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT))/2)
 success, frame = videoCapture.read()
-
-
-#cv2.cv.CV_FOURCC('I','4','2','0') avi
-#cv2.cv.CV_FOURCC('P','I','M','1') avi
-#cv2.cv.CV_FOURCC('M','J','P','G') avi
-#cv2.cv.CV_FOURCC('T','H','E','O') ogv
-#cv2.cv.CV_FOURCC('F','L','V','1') flv
-video=cv2.VideoWriter(dir_name, cv2.cv.CV_FOURCC('M','J','P','G'), int(fps),size)
 
 while success:
     timer=Timer()
@@ -81,13 +71,13 @@ while success:
     shape=output['detection_out'].shape
     detectors=output['detection_out'].reshape(shape[2],shape[3])
     #visualize
-    img=cv2.resize(frame,(size[1],size[0]))
+    img=cv2.resize(frame,size)
     for i in xrange(detectors.shape[0]):
         if detectors[i][2]>=visualize_threshold:
-            xmin=int(detectors[i][3]*size[1])
-            ymin=int(detectors[i][4]*size[0])
-            xmax=int(detectors[i][5]*size[1])
-            ymax=int(detectors[i][6]*size[0])
+            xmin=int(detectors[i][3]*size[0])
+            ymin=int(detectors[i][4]*size[1])
+            xmax=int(detectors[i][5]*size[0])
+            ymax=int(detectors[i][6]*size[1])
             label=detectors[i][1]
             rect_start=(xmin,ymin)
             rect_end=(xmax,ymax)
